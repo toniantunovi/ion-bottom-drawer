@@ -1,0 +1,7 @@
+{
+  "name": "ionic-bottom-drawer",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

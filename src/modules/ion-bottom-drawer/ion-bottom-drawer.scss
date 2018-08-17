@@ -1,0 +1,13 @@
+ion-bottom-drawer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  z-index: 11 !important;
+  background-color: white;
+  transition: top 0.5s;
+
+  &.isHidden {
+    top: 100vh !important;
+  }
+}

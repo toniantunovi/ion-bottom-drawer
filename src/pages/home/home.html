@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Bottom Drawer Demo
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Drawer hidden</ion-label>
+      <ion-checkbox [(ngModel)]="drawerHidden"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Bounce</ion-label>
+      <ion-checkbox [(ngModel)]="shouldBounce"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Docked height</ion-label>
+      <ion-input type="number" [(ngModel)]="dockedHeight" value="150"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Bounce threshold</ion-label>
+      <ion-input type="number" [(ngModel)]="bounceThreshold" value="500"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Top Distance</ion-label>
+      <ion-input type="number" [(ngModel)]="distanceTop" value="56"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-bottom-drawer [(hidden)]="drawerHidden" [dockedHeight]="dockedHeight" [bounceThreshold]="bounceThreshold" [shouldBounce]="shouldBounce"
+  [distanceTop]="distanceTop">
+  <div class="drawer-content">
+    Bottom Drawer Content
+  </div>
+</ion-bottom-drawer>
