@@ -46,5 +46,6 @@
     "zone.js": "0.8.26",
     "@types/hammerjs": "^2.0.35"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "dependencies": {}
 }
