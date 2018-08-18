@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  z-index: 11 !important;
+  background-color: white;
+  transition: top 0.5s;
+
+  &.hidden {
+    top: 100vh !important;
+  }
+}
+
+ion-bottom-drawer {
+  &.hidden {
+    top: 100vh !important;
+  }
+}
