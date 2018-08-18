@@ -3,8 +3,7 @@ import { Platform, DomController } from 'ionic-angular';
 
 @Component({
   selector: 'ion-bottom-drawer',
-  templateUrl: 'ion-bottom-drawer.html',
-  styleUrls: ['ion-bottom-drawer.scss']
+  templateUrl: 'ion-bottom-drawer.html'
 })
 export class IonBottomDrawerComponent {
   @Input() dockedHeight: number = 50;
@@ -17,7 +16,7 @@ export class IonBottomDrawerComponent {
   private startPositionTop: number;
   private readonly HIDE_HEIGHT_DIFF = 30;
 
-  constructor(public element: ElementRef, public renderer: Renderer2, public domCtrl: DomController, public platform: Platform) { }
+  constructor(private element: ElementRef, private renderer: Renderer2, private domCtrl: DomController, private platform: Platform) { }
 
   ngAfterViewInit() {
     this.renderer.setStyle(this.element.nativeElement, 'top', this.platform.height() - this.dockedHeight + 'px');
