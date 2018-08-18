@@ -1,8 +1,8 @@
 # Ionic 3 Bottom Drawer
 
-Bottom drawer component for Ionic 3.
+Bottom drawer component for Ionic 3. Demo can be viewed <a href="https://toniantunovi.github.io/ion-bottom-drawer/"> here</a>.
 
-# How to use?
+# Installation
 
 ```
 $ npm i ion-bottom-drawer --save
@@ -60,4 +60,5 @@ Use it in your component template like this:
 
 # License
 
-MIT
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+This component is distributed under the MIT License.
