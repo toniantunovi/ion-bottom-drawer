@@ -1,6 +1,6 @@
 {
   "name": "ion-bottom-drawer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Bottom drawer component for Ionic 3",
   "author": "Toni Antunovic",
   "homepage": "https://antunovic.co",
@@ -27,6 +27,12 @@
   "peerDependencies": {
     "ionic-angular": "^3.9.2"
   },
+  "keywords": [
+    "angular",
+    "ionic",
+    "bottom",
+    "drawer"
+  ],
   "devDependencies": {
     "@ionic/app-scripts": "3.1.11",
     "ng-packagr": "^3.0.0",
