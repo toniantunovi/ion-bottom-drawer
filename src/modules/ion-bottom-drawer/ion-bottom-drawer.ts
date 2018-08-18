@@ -3,7 +3,8 @@ import { Platform, DomController } from 'ionic-angular';
 
 @Component({
   selector: 'ion-bottom-drawer',
-  templateUrl: 'ion-bottom-drawer.html'
+  templateUrl: 'ion-bottom-drawer.html',
+  styleUrls: ['ion-bottom-drawer.scss']
 })
 export class IonBottomDrawerComponent {
   @Input() dockedHeight: number = 50;
