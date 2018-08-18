@@ -1,8 +1,10 @@
 {
   "name": "ion-bottom-drawer",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "description": "Bottom drawer component for Ionic 3",
   "author": "Toni Antunovic",
   "homepage": "https://antunovic.co",
+  "licence": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/toniantunovi/ion-bottom-drawer"
@@ -49,6 +51,5 @@
     "zone.js": "0.8.26",
     "@types/hammerjs": "^2.0.35"
   },
-  "description": "Bottom drawer component for Ionic 3",
   "dependencies": {}
 }

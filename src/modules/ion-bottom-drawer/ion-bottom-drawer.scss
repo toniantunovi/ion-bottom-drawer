@@ -1,4 +1,4 @@
-ion-bottom-drawer {
+:host {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -7,7 +7,13 @@ ion-bottom-drawer {
   background-color: white;
   transition: top 0.5s;
 
-  &.isHidden {
+  &.hidden {
+    top: 100vh !important;
+  }
+}
+
+ion-bottom-drawer {
+  &.hidden {
     top: 100vh !important;
   }
 }

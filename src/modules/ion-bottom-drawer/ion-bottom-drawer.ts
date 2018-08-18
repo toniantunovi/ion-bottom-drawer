@@ -11,7 +11,7 @@ export class IonBottomDrawerComponent {
   @Input() shouldBounce: boolean = true;
   @Input() bounceThreshold: number = 200;
   @Input() distanceTop: number = 0;
-  @Input() @HostBinding('class.isHidden') hidden: boolean = false;
+  @Input() @HostBinding('class.hidden') hidden: boolean = false;
   @Output() hiddenChange = new EventEmitter<boolean>();
 
   private startPositionTop: number;
@@ -59,11 +59,13 @@ export class IonBottomDrawerComponent {
     } else if (bounceToBottom) {
       this.domCtrl.write(() => {
         this.renderer.setStyle(this.element.nativeElement, 'transition', 'top 0.5s');
-        this.renderer.setStyle(this.element.nativeElement, 'top', this.platform.height() - this.dockedHeight + 'px');
         if (this.startPositionTop === this.platform.height() - this.dockedHeight && ev.deltaY > this.HIDE_HEIGHT_DIFF) {
-          this.renderer.addClass(this.element.nativeElement, 'isHidden');
+          this.renderer.addClass(this.element.nativeElement, 'hidden');
+          this.renderer.setStyle(this.element.nativeElement, 'top', this.platform.height() - this.dockedHeight + 'px');
           this.hidden = true;
           this.hiddenChange.emit(this.hidden);
+        } else {
+          this.renderer.setStyle(this.element.nativeElement, 'top', this.platform.height() - this.dockedHeight + 'px');
         }
       });
     }
