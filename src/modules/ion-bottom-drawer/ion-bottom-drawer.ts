@@ -20,6 +20,7 @@ export class IonBottomDrawerComponent {
   constructor(private element: ElementRef, private renderer: Renderer2, private domCtrl: DomController, private platform: Platform) { }
 
   ngAfterViewInit() {
+    this.renderer.setStyle(this.element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
     this.renderer.setStyle(this.element.nativeElement, 'top', this.platform.height() - this.dockedHeight + 'px');
     const hammer = new Hammer(this.element.nativeElement);
     hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });

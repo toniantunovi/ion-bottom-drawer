@@ -10,22 +10,10 @@
   &.hidden {
     top: 100vh !important;
   }
-
-  ion-content {
-    .scroll-content {
-      touch-action: none !important;
-    }
-  }
 }
 
 ion-bottom-drawer {
   &.hidden {
     top: 100vh !important;
-  }
-
-  ion-content {
-    .scroll-content {
-      touch-action: none !important;
-    }
   }
 }
