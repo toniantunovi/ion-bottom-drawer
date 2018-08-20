@@ -31,8 +31,8 @@
   </ion-list>
 </ion-content>
 
-<ion-bottom-drawer (hiddenChange)="drawerToggle($event)" [hidden]="drawerHidden" [dockedHeight]="dockedHeight" [bounceThreshold]="bounceThreshold"
-  [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
+<ion-bottom-drawer [(hidden)]="drawerHidden" [dockedHeight]="dockedHeight" [bounceThreshold]="bounceThreshold" [shouldBounce]="shouldBounce"
+  [distanceTop]="distanceTop">
   <div class="drawer-content">
     Bottom Drawer Content
   </div>

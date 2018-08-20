@@ -25693,18 +25693,8 @@ ion-navbar.toolbar {
   top: 100vh !important;
 }
 
-:host ion-content .scroll-content {
-  -ms-touch-action: none !important;
-  touch-action: none !important;
-}
-
 ion-bottom-drawer.hidden {
   top: 100vh !important;
-}
-
-ion-bottom-drawer ion-content .scroll-content {
-  -ms-touch-action: none !important;
-  touch-action: none !important;
 }
 
 page-home .drawer-content {

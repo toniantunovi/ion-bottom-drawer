@@ -40,21 +40,15 @@ webpackEmptyAsyncContext.id = 149;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
 
 var HomePage = /** @class */ (function () {
-    function HomePage(navCtrl) {
-        this.navCtrl = navCtrl;
+    function HomePage() {
         this.drawerHidden = false;
         this.shouldBounce = true;
         this.dockedHeight = 150;
@@ -63,9 +57,8 @@ var HomePage = /** @class */ (function () {
     }
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Bottom Drawer Demo\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding no-bounce>\n  <ion-list>\n    <ion-item>\n      <ion-label>Drawer hidden</ion-label>\n      <ion-checkbox [(ngModel)]="drawerHidden"></ion-checkbox>\n    </ion-item>\n    <ion-item>\n      <ion-label>Bounce</ion-label>\n      <ion-checkbox [(ngModel)]="shouldBounce"></ion-checkbox>\n    </ion-item>\n    <ion-item>\n      <ion-label>Docked height</ion-label>\n      <ion-input type="number" [(ngModel)]="dockedHeight" value="150"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Bounce threshold</ion-label>\n      <ion-input type="number" [(ngModel)]="bounceThreshold" value="500"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Top Distance</ion-label>\n      <ion-input type="number" [(ngModel)]="distanceTop" value="56"></ion-input>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-bottom-drawer (hiddenChange)="drawerToggle($event)" [hidden]="drawerHidden" [dockedHeight]="dockedHeight" [bounceThreshold]="bounceThreshold"\n  [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">\n  <div class="drawer-content">\n    Bottom Drawer Content\n  </div>\n</ion-bottom-drawer>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
+            selector: 'page-home',template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Bottom Drawer Demo\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding no-bounce>\n  <ion-list>\n    <ion-item>\n      <ion-label>Drawer hidden</ion-label>\n      <ion-checkbox [(ngModel)]="drawerHidden"></ion-checkbox>\n    </ion-item>\n    <ion-item>\n      <ion-label>Bounce</ion-label>\n      <ion-checkbox [(ngModel)]="shouldBounce"></ion-checkbox>\n    </ion-item>\n    <ion-item>\n      <ion-label>Docked height</ion-label>\n      <ion-input type="number" [(ngModel)]="dockedHeight" value="150"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Bounce threshold</ion-label>\n      <ion-input type="number" [(ngModel)]="bounceThreshold" value="500"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Top Distance</ion-label>\n      <ion-input type="number" [(ngModel)]="distanceTop" value="56"></ion-input>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-bottom-drawer [(hidden)]="drawerHidden" [dockedHeight]="dockedHeight" [bounceThreshold]="bounceThreshold" [shouldBounce]="shouldBounce"\n  [distanceTop]="distanceTop">\n  <div class="drawer-content">\n    Bottom Drawer Content\n  </div>\n</ion-bottom-drawer>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/
+        })
     ], HomePage);
     return HomePage;
 }());
@@ -95,7 +88,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(267);
@@ -156,7 +149,7 @@ var AppModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(193);
@@ -187,7 +180,7 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
@@ -202,7 +195,7 @@ var MyApp = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IonBottomDrawerModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ion_bottom_drawer__ = __webpack_require__(269);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -236,7 +229,7 @@ var IonBottomDrawerModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IonBottomDrawerComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -264,6 +257,7 @@ var IonBottomDrawerComponent = /** @class */ (function () {
     }
     IonBottomDrawerComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
+        this.renderer.setStyle(this.element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
         this.renderer.setStyle(this.element.nativeElement, 'top', this.platform.height() - this.dockedHeight + 'px');
         var hammer = new Hammer(this.element.nativeElement);
         hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });
@@ -355,10 +349,10 @@ var IonBottomDrawerComponent = /** @class */ (function () {
     ], IonBottomDrawerComponent.prototype, "hiddenChange", void 0);
     IonBottomDrawerComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'ion-bottom-drawer',template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/modules/ion-bottom-drawer/ion-bottom-drawer.html"*/'<ion-content no-bounce>\n  <ng-content></ng-content>\n</ion-content>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/modules/ion-bottom-drawer/ion-bottom-drawer.html"*/,
+            selector: 'ion-bottom-drawer',template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/modules/ion-bottom-drawer/ion-bottom-drawer.html"*/'<ion-content class="ion-bottom-drawer-scrollable-content" no-bounce>\n  <ng-content></ng-content>\n</ion-content>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/modules/ion-bottom-drawer/ion-bottom-drawer.html"*/,
             styleUrls: ['ion-bottom-drawer.scss']
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* Renderer2 */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* DomController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Platform */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* Renderer2 */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* DomController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */]])
     ], IonBottomDrawerComponent);
     return IonBottomDrawerComponent;
 }());

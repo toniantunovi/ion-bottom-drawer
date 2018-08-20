@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-home',
@@ -10,11 +10,4 @@ export class HomePage {
   dockedHeight = 150;
   bounceThreshold = 500;
   distanceTop = 56;
-
-  constructor(private ref: ChangeDetectorRef) { }
-
-  drawerToggle(isHidden: boolean) {
-    this.drawerHidden = isHidden;
-    this.ref.detectChanges();
-  }
 }
