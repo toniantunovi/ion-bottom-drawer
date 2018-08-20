@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'page-home',
@@ -12,5 +11,10 @@ export class HomePage {
   bounceThreshold = 500;
   distanceTop = 56;
 
-  constructor(public navCtrl: NavController) { }
+  constructor(private ref: ChangeDetectorRef) { }
+
+  drawerToggle(isHidden: boolean) {
+    this.drawerHidden = isHidden;
+    this.ref.detectChanges();
+  }
 }
