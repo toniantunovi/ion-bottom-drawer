@@ -16,7 +16,7 @@ $ npm i ion-bottom-drawer --save
   - `shouldBounce: boolean` - Determines whether the drawer should automatically bounce between docked, closed and top positions.
   - `bounceThreshold: number` - Distance from bottom (pixels) at which the drawer will bounce to docked position. Otherwise it bounces to top position.
   - `distanceTop: number` - Distance from top of fully opened drawer.
-  - `hidden: boolean` - When set to false it will close the drawer completely. When set to true it will open it to docked position.
+  - `hidden: boolean` - When set to true it will close the drawer completely. When set to false it will open it to docked position.
 
 # Behavior
 The drawer has three basic states: closed, docked and opened to maximum 'distanceTop' from top of the screen. It will bounce by default which means it will always go to one of three states above. This can be disabled by setting 'shouldBounce' to false.
