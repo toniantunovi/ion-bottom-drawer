@@ -89,7 +89,6 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
           this.state = DrawerState.Closed;
         } else {
           if (this.state === DrawerState.Docked) this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
-          if (this.state === DrawerState.Closed) return;
           this.state = DrawerState.Docked;
         }
       }
