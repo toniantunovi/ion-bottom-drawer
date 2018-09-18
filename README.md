@@ -12,11 +12,14 @@ $ npm i ion-bottom-drawer --save
 
 ## Inputs
 
-  - `dockedHeight: number` - Height of the drawer in docked position.
-  - `shouldBounce: boolean` - Determines whether the drawer should automatically bounce between docked, closed and top positions.
-  - `bounceThreshold: number` - Distance from bottom (pixels) at which the drawer will bounce to docked position. Otherwise it bounces to top position.
-  - `distanceTop: number` - Distance from top of fully opened drawer.
-  - `hidden: boolean` - When set to false it will close the drawer completely. When set to true it will open it to docked position.
+  - `dockedHeight: number` - Height of the drawer in docked position. Default value: `50`.
+  - `shouldBounce: boolean` - Determines whether the drawer should automatically bounce between docked, closed and top positions. Default value: `True`.
+  - `bounceThreshold: number` - Distance from bottom (pixels) at which the drawer will bounce to docked position. Otherwise it bounces to top position. Default value: `200`.
+  - `distanceTop: number` - Distance from top of fully opened drawer. Default value: `0`.
+  - `transition: string` - Specify custom CSS transition for bounce movement. Default value: `0.5s ease-in-out`.
+  - `state: DrawerState` - Current state of the drawer. Possible values: DrawerState.Closed, DrawerState.Docked, DrawerState.Opened. Default value: `DrawerState.Docked`.
+  - `minimumHeight: number` - Height of the drawer when in closed state calculated from the bottom of the screen. Default value: `0`. 
+
 
 # Behavior
 The drawer has three basic states: closed, docked and opened to maximum 'distanceTop' from top of the screen. It will bounce by default which means it will always go to one of three states above. This can be disabled by setting 'shouldBounce' to false.
@@ -50,8 +53,8 @@ Use it in your component template like this:
 ```html
 <ion-content no-bounce>Component content.<ion-content>
 
-<ion-bottom-drawer [(hidden)]="drawerHidden" [dockedHeight]="dockedHeight" [bounceThreshold]="bounceThreshold" [shouldBounce]="shouldBounce"
-  [distanceTop]="distanceTop">
+<ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight"
+  [bounceThreshold]="bounceThreshold" [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
   <div class="drawer-content">
     Bottom Drawer Content
   </div>
