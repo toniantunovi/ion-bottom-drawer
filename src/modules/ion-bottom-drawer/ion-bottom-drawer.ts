@@ -1,88 +1,115 @@
-import { Component, Input, ElementRef, Renderer2, HostBinding, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ElementRef, Renderer2, Output, EventEmitter, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Platform, DomController } from 'ionic-angular';
+
+import { DrawerState } from './drawer-state';
 
 @Component({
   selector: 'ion-bottom-drawer',
   templateUrl: 'ion-bottom-drawer.html',
   styleUrls: ['ion-bottom-drawer.scss']
 })
-export class IonBottomDrawerComponent {
+export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
   @Input() dockedHeight: number = 50;
+
   @Input() shouldBounce: boolean = true;
+
   @Input() bounceThreshold: number = 200;
+
   @Input() distanceTop: number = 0;
-  @Input() @HostBinding('class.hidden') hidden: boolean = false;
-  @Output() hiddenChange = new EventEmitter<boolean>();
 
-  private startPositionTop: number;
-  private readonly HIDE_HEIGHT_DIFF = 30;
+  @Input() transition: string = '0.5s ease-in-out';
 
-  constructor(private element: ElementRef, private renderer: Renderer2, private domCtrl: DomController, private platform: Platform) { }
+  @Input() state: DrawerState = DrawerState.Docked;
+
+  @Output() stateChange: EventEmitter<DrawerState> = new EventEmitter<DrawerState>();
+
+  private _startPositionTop: number;
+  private readonly _HIDE_HEIGHT_DIFF = 30;
+
+  constructor(
+    private _element: ElementRef,
+    private _renderer: Renderer2,
+    private _domCtrl: DomController,
+    private _platform: Platform
+  ) { }
 
   ngAfterViewInit() {
-    this.renderer.setStyle(this.element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
-    this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + (this.platform.height() - this.dockedHeight) + 'px)');
-    const hammer = new Hammer(this.element.nativeElement);
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
+    this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
+
+    const hammer = new Hammer(this._element.nativeElement);
     hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });
     hammer.on('pan panstart panend', (ev: any) => {
       switch (ev.type) {
         case 'panstart':
-          this.handlePanStart();
+          this._handlePanStart();
           break;
         case 'panend':
-          this.handlePanEnd(ev);
+          this._handlePanEnd(ev);
           break;
         default:
-          this.handlePan(ev);
+          this._handlePan(ev);
       }
     });
   }
 
-  private handlePanStart() {
-    this.startPositionTop = this.element.nativeElement.getBoundingClientRect().top;
+  ngOnChanges(changes: SimpleChanges) {
+    if (!changes.state) return;
+
+    switch (changes.state.currentValue) {
+      case DrawerState.Closed:
+        this._setTranslateY('100vh');
+        break;
+      case DrawerState.Docked:
+        this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
+        break;
+      default:
+        this._setTranslateY(this.distanceTop + 'px');
+    }
   }
 
-  private handlePanEnd(ev) {
-    let bounceToBottom = false;
-    let bounceToTop = false;
-    const newTop = this.startPositionTop + ev.deltaY;
+  private _handlePanStart() {
+    this._startPositionTop = this._element.nativeElement.getBoundingClientRect().top;
+  }
+
+  private _handlePanEnd(ev) {
+    const newTop = this._startPositionTop + ev.deltaY;
 
     if (this.shouldBounce && ev.isFinal) {
-      let bottomDiff = (this.platform.height() - this.bounceThreshold) - newTop;
-      bottomDiff < 0 ? bounceToBottom = true : bounceToTop = true;
-    }
+      this._renderer.setStyle(this._element.nativeElement, 'transition', this.transition);
+      const bottomDiff = this._platform.height() - this.bounceThreshold - newTop;
 
-    if (bounceToTop) {
-      this.domCtrl.write(() => {
-        this.renderer.setStyle(this.element.nativeElement, 'transition', '0.5s ease-in-out');
-        this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + this.distanceTop + 'px)');
-      });
-    } else if (bounceToBottom) {
-      this.domCtrl.write(() => {
-        this.renderer.setStyle(this.element.nativeElement, 'transition', '0.5s ease-in-out');
-        if (this.startPositionTop === this.platform.height() - this.dockedHeight && ev.deltaY > this.HIDE_HEIGHT_DIFF) {
-          this.renderer.addClass(this.element.nativeElement, 'hidden');
-          this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + (this.platform.height() - this.dockedHeight) + 'px)');
-          this.hidden = true;
-          this.hiddenChange.emit(this.hidden);
+      if (bottomDiff >= 0) {
+        if (this.state === DrawerState.Opened) this._setTranslateY(this.distanceTop + 'px');
+        this.state = DrawerState.Opened;
+      } else {
+        if (this.state === DrawerState.Docked && ev.deltaY > this._HIDE_HEIGHT_DIFF) {
+          this.state = DrawerState.Closed;
         } else {
-          this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + (this.platform.height() - this.dockedHeight) + 'px)');
+          if (this.state === DrawerState.Docked) this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
+          this.state = DrawerState.Docked;
         }
-      });
+      }
+
+      this.stateChange.emit(this.state);
     }
   }
 
-  private handlePan(ev) {
+  private _handlePan(ev) {
     const pointerY = ev.center.y;
-    this.renderer.setStyle(this.element.nativeElement, 'transition', 'none');
-    if (pointerY > 0 && pointerY < this.platform.height()) {
+    this._renderer.setStyle(this._element.nativeElement, 'transition', 'none');
+    if (pointerY > 0 && pointerY < this._platform.height()) {
       if (ev.additionalEvent === 'panup' || ev.additionalEvent === 'pandown') {
-        this.domCtrl.write(() => {
-          const newTop = this.startPositionTop + ev.deltaY;
-          if (newTop >= this.distanceTop) this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + newTop + 'px)');
-          else if (newTop < this.distanceTop) this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + this.distanceTop + 'px)');
-        });
+        const newTop = this._startPositionTop + ev.deltaY;
+        if (newTop >= this.distanceTop) this._setTranslateY(newTop + 'px');
+        else if (newTop < this.distanceTop) this._setTranslateY(this.distanceTop + 'px');
       }
     }
+  }
+
+  private _setTranslateY(value) {
+    this._domCtrl.write(() => {
+      this._renderer.setStyle(this._element.nativeElement, 'transform', 'translateY(' + value + ')');
+    });
   }
 }

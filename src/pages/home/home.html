@@ -7,11 +7,21 @@
 </ion-header>
 
 <ion-content padding no-bounce>
-  <ion-list>
+  <ion-list radio-group [(ngModel)]="drawerState">
     <ion-item>
-      <ion-label>Drawer hidden</ion-label>
-      <ion-checkbox [(ngModel)]="drawerHidden"></ion-checkbox>
+      <ion-label>Opened</ion-label>
+      <ion-radio [checked]="drawerState===states.Opened" [value]="states.Opened"></ion-radio>
     </ion-item>
+    <ion-item>
+      <ion-label>Docked</ion-label>
+      <ion-radio [checked]="drawerState===states.Docked" [value]="states.Docked"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Closed</ion-label>
+      <ion-radio [checked]="drawerState===states.Closed" [value]="states.Closed"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <ion-list>
     <ion-item>
       <ion-label>Bounce</ion-label>
       <ion-checkbox [(ngModel)]="shouldBounce"></ion-checkbox>
@@ -31,8 +41,8 @@
   </ion-list>
 </ion-content>
 
-<ion-bottom-drawer [(hidden)]="drawerHidden" [dockedHeight]="dockedHeight" [bounceThreshold]="bounceThreshold" [shouldBounce]="shouldBounce"
-  [distanceTop]="distanceTop">
+<ion-bottom-drawer [(state)]="drawerState" [dockedHeight]="dockedHeight" [bounceThreshold]="bounceThreshold"
+  [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
   <div class="drawer-content">
     Bottom Drawer Content
   </div>
