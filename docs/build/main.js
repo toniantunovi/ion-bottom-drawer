@@ -40,6 +40,7 @@ webpackEmptyAsyncContext.id = 149;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_ion_bottom_drawer_drawer_state__ = __webpack_require__(194);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -47,17 +48,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
+
 var HomePage = /** @class */ (function () {
     function HomePage() {
-        this.drawerHidden = false;
         this.shouldBounce = true;
         this.dockedHeight = 150;
         this.bounceThreshold = 500;
         this.distanceTop = 56;
+        this.drawerState = __WEBPACK_IMPORTED_MODULE_1__modules_ion_bottom_drawer_drawer_state__["a" /* DrawerState */].Docked;
+        this.states = __WEBPACK_IMPORTED_MODULE_1__modules_ion_bottom_drawer_drawer_state__["a" /* DrawerState */];
+        this.minimumHeight = 0;
     }
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Bottom Drawer Demo\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding no-bounce>\n  <ion-list>\n    <ion-item>\n      <ion-label>Drawer hidden</ion-label>\n      <ion-checkbox [(ngModel)]="drawerHidden"></ion-checkbox>\n    </ion-item>\n    <ion-item>\n      <ion-label>Bounce</ion-label>\n      <ion-checkbox [(ngModel)]="shouldBounce"></ion-checkbox>\n    </ion-item>\n    <ion-item>\n      <ion-label>Docked height</ion-label>\n      <ion-input type="number" [(ngModel)]="dockedHeight" value="150"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Bounce threshold</ion-label>\n      <ion-input type="number" [(ngModel)]="bounceThreshold" value="500"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Top Distance</ion-label>\n      <ion-input type="number" [(ngModel)]="distanceTop" value="56"></ion-input>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-bottom-drawer [(hidden)]="drawerHidden" [dockedHeight]="dockedHeight" [bounceThreshold]="bounceThreshold" [shouldBounce]="shouldBounce"\n  [distanceTop]="distanceTop">\n  <div class="drawer-content">\n    Bottom Drawer Content\n  </div>\n</ion-bottom-drawer>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Bottom Drawer Demo\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding no-bounce>\n  <ion-list radio-group [(ngModel)]="drawerState">\n    <ion-item>\n      <ion-label>Opened</ion-label>\n      <ion-radio [checked]="drawerState===states.Opened" [value]="states.Opened"></ion-radio>\n    </ion-item>\n    <ion-item>\n      <ion-label>Docked</ion-label>\n      <ion-radio [checked]="drawerState===states.Docked" [value]="states.Docked"></ion-radio>\n    </ion-item>\n    <ion-item>\n      <ion-label>Closed</ion-label>\n      <ion-radio [checked]="drawerState===states.Closed" [value]="states.Closed"></ion-radio>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-item>\n      <ion-label>Bounce</ion-label>\n      <ion-checkbox [(ngModel)]="shouldBounce"></ion-checkbox>\n    </ion-item>\n    <ion-item>\n      <ion-label>Docked height</ion-label>\n      <ion-input type="number" [(ngModel)]="dockedHeight" value="150"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Bounce threshold</ion-label>\n      <ion-input type="number" [(ngModel)]="bounceThreshold" value="500"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Top Distance</ion-label>\n      <ion-input type="number" [(ngModel)]="distanceTop" value="56"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Minimum Height</ion-label>\n      <ion-input type="number" [(ngModel)]="minimumHeight" value="0"></ion-input>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight"\n  [bounceThreshold]="bounceThreshold" [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">\n  <div class="drawer-content">\n    Bottom Drawer Content\n  </div>\n</ion-bottom-drawer>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/
         })
     ], HomePage);
     return HomePage;
@@ -71,9 +75,24 @@ var HomePage = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DrawerState; });
+var DrawerState;
+(function (DrawerState) {
+    DrawerState[DrawerState["Closed"] = 0] = "Closed";
+    DrawerState[DrawerState["Docked"] = 1] = "Docked";
+    DrawerState[DrawerState["Opened"] = 2] = "Opened";
+})(DrawerState || (DrawerState = {}));
+//# sourceMappingURL=drawer-state.js.map
+
+/***/ }),
+
+/***/ 195:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(218);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -81,7 +100,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 217:
+/***/ 218:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91,9 +110,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_ion_bottom_drawer_ion_bottom_drawer_module__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_ion_bottom_drawer_ion_bottom_drawer_module__ = __webpack_require__(269);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -143,7 +162,7 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 267:
+/***/ 268:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -189,14 +208,14 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 268:
+/***/ 269:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IonBottomDrawerModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ion_bottom_drawer__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ion_bottom_drawer__ = __webpack_require__(270);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -223,13 +242,14 @@ var IonBottomDrawerModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 269:
+/***/ 270:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IonBottomDrawerComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__drawer_state__ = __webpack_require__(194);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -241,87 +261,104 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var IonBottomDrawerComponent = /** @class */ (function () {
-    function IonBottomDrawerComponent(element, renderer, domCtrl, platform) {
-        this.element = element;
-        this.renderer = renderer;
-        this.domCtrl = domCtrl;
-        this.platform = platform;
+    function IonBottomDrawerComponent(_element, _renderer, _domCtrl, _platform) {
+        this._element = _element;
+        this._renderer = _renderer;
+        this._domCtrl = _domCtrl;
+        this._platform = _platform;
         this.dockedHeight = 50;
         this.shouldBounce = true;
         this.bounceThreshold = 200;
         this.distanceTop = 0;
-        this.hidden = false;
-        this.hiddenChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
-        this.HIDE_HEIGHT_DIFF = 30;
+        this.transition = '0.5s ease-in-out';
+        this.state = __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Docked;
+        this.minimumHeight = 0;
+        this.stateChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
+        this._HIDE_HEIGHT_DIFF = 30;
     }
     IonBottomDrawerComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
-        this.renderer.setStyle(this.element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
-        this.renderer.setStyle(this.element.nativeElement, 'top', this.platform.height() - this.dockedHeight + 'px');
-        var hammer = new Hammer(this.element.nativeElement);
+        this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
+        this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
+        var hammer = new Hammer(this._element.nativeElement);
         hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });
         hammer.on('pan panstart panend', function (ev) {
             switch (ev.type) {
                 case 'panstart':
-                    _this.handlePanStart();
+                    _this._handlePanStart();
                     break;
                 case 'panend':
-                    _this.handlePanEnd(ev);
+                    _this._handlePanEnd(ev);
                     break;
                 default:
-                    _this.handlePan(ev);
+                    _this._handlePan(ev);
             }
         });
     };
-    IonBottomDrawerComponent.prototype.handlePanStart = function () {
-        this.startPositionTop = this.element.nativeElement.offsetTop;
+    IonBottomDrawerComponent.prototype.ngOnChanges = function (changes) {
+        if (!changes.state)
+            return;
+        switch (changes.state.currentValue) {
+            case __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Closed:
+                this._setTranslateY('calc(100vh - ' + this.minimumHeight + 'px)');
+                break;
+            case __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Docked:
+                this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
+                break;
+            default:
+                this._setTranslateY(this.distanceTop + 'px');
+        }
     };
-    IonBottomDrawerComponent.prototype.handlePanEnd = function (ev) {
-        var _this = this;
-        var bounceToBottom = false;
-        var bounceToTop = false;
-        var newTop = this.startPositionTop + ev.deltaY;
+    IonBottomDrawerComponent.prototype._handlePanStart = function () {
+        this._startPositionTop = this._element.nativeElement.getBoundingClientRect().top;
+    };
+    IonBottomDrawerComponent.prototype._handlePanEnd = function (ev) {
+        var newTop = this._startPositionTop + ev.deltaY;
         if (this.shouldBounce && ev.isFinal) {
-            var bottomDiff = (this.platform.height() - this.bounceThreshold) - newTop;
-            bottomDiff < 0 ? bounceToBottom = true : bounceToTop = true;
-        }
-        if (bounceToTop) {
-            this.domCtrl.write(function () {
-                _this.renderer.setStyle(_this.element.nativeElement, 'transition', 'top 0.5s');
-                _this.renderer.setStyle(_this.element.nativeElement, 'top', _this.distanceTop + 'px');
-            });
-        }
-        else if (bounceToBottom) {
-            this.domCtrl.write(function () {
-                _this.renderer.setStyle(_this.element.nativeElement, 'transition', 'top 0.5s');
-                if (_this.startPositionTop === _this.platform.height() - _this.dockedHeight && ev.deltaY > _this.HIDE_HEIGHT_DIFF) {
-                    _this.renderer.addClass(_this.element.nativeElement, 'hidden');
-                    _this.renderer.setStyle(_this.element.nativeElement, 'top', _this.platform.height() - _this.dockedHeight + 'px');
-                    _this.hidden = true;
-                    _this.hiddenChange.emit(_this.hidden);
+            this._renderer.setStyle(this._element.nativeElement, 'transition', this.transition);
+            var bottomDiff = this._platform.height() - this.bounceThreshold - newTop;
+            if (bottomDiff >= 0) {
+                if (this.state === __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Opened)
+                    this._setTranslateY(this.distanceTop + 'px');
+                this.state = __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Opened;
+            }
+            else {
+                if (this.state === __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Docked && ev.deltaY > this._HIDE_HEIGHT_DIFF) {
+                    this.state = __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Closed;
                 }
                 else {
-                    _this.renderer.setStyle(_this.element.nativeElement, 'top', _this.platform.height() - _this.dockedHeight + 'px');
+                    if (this.state === __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Docked)
+                        this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
+                    if (this.state === __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Closed)
+                        return;
+                    this.state = __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Docked;
                 }
-            });
+            }
+            this.stateChange.emit(this.state);
         }
     };
-    IonBottomDrawerComponent.prototype.handlePan = function (ev) {
-        var _this = this;
+    IonBottomDrawerComponent.prototype._handlePan = function (ev) {
         var pointerY = ev.center.y;
-        this.renderer.setStyle(this.element.nativeElement, 'transition', 'none');
-        if (pointerY > 0 && pointerY < this.platform.height()) {
+        this._renderer.setStyle(this._element.nativeElement, 'transition', 'none');
+        if (pointerY > 0 && pointerY < this._platform.height()) {
             if (ev.additionalEvent === 'panup' || ev.additionalEvent === 'pandown') {
-                this.domCtrl.write(function () {
-                    var newTop = _this.startPositionTop + ev.deltaY;
-                    if (newTop >= _this.distanceTop)
-                        _this.renderer.setStyle(_this.element.nativeElement, 'top', newTop + 'px');
-                    else if (newTop < _this.distanceTop)
-                        _this.renderer.setStyle(_this.element.nativeElement, 'top', _this.distanceTop + 'px');
-                });
+                var newTop = this._startPositionTop + ev.deltaY;
+                if (newTop >= this.distanceTop)
+                    this._setTranslateY(newTop + 'px');
+                else if (newTop < this.distanceTop)
+                    this._setTranslateY(this.distanceTop + 'px');
+                if (newTop > this._platform.height() - this.minimumHeight)
+                    this._setTranslateY((this._platform.height() - this.minimumHeight) + 'px');
             }
         }
+    };
+    IonBottomDrawerComponent.prototype._setTranslateY = function (value) {
+        var _this = this;
+        this._domCtrl.write(function () {
+            _this._renderer.setStyle(_this._element.nativeElement, 'transform', 'translateY(' + value + ')');
+        });
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
@@ -340,26 +377,35 @@ var IonBottomDrawerComponent = /** @class */ (function () {
         __metadata("design:type", Number)
     ], IonBottomDrawerComponent.prototype, "distanceTop", void 0);
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(), Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* HostBinding */])('class.hidden'),
-        __metadata("design:type", Boolean)
-    ], IonBottomDrawerComponent.prototype, "hidden", void 0);
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", String)
+    ], IonBottomDrawerComponent.prototype, "transition", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */]) === "function" && _a || Object)
+    ], IonBottomDrawerComponent.prototype, "state", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Number)
+    ], IonBottomDrawerComponent.prototype, "minimumHeight", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Output */])(),
-        __metadata("design:type", Object)
-    ], IonBottomDrawerComponent.prototype, "hiddenChange", void 0);
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]) === "function" && _b || Object)
+    ], IonBottomDrawerComponent.prototype, "stateChange", void 0);
     IonBottomDrawerComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'ion-bottom-drawer',template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/modules/ion-bottom-drawer/ion-bottom-drawer.html"*/'<ion-content class="ion-bottom-drawer-scrollable-content" no-bounce>\n  <ng-content></ng-content>\n</ion-content>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/modules/ion-bottom-drawer/ion-bottom-drawer.html"*/,
             styleUrls: ['ion-bottom-drawer.scss']
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* Renderer2 */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* DomController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */]])
+        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* Renderer2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* Renderer2 */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* DomController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* DomController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */]) === "function" && _f || Object])
     ], IonBottomDrawerComponent);
     return IonBottomDrawerComponent;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=ion-bottom-drawer.js.map
 
 /***/ })
 
-},[194]);
+},[195]);
 //# sourceMappingURL=main.js.map

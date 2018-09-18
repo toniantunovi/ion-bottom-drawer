@@ -25687,14 +25687,18 @@ ion-navbar.toolbar {
   background-color: white;
   -webkit-transition: top 0.5s;
   transition: top 0.5s;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 :host.hidden {
-  top: 100vh !important;
+  -webkit-transform: translateY(100vh) !important;
+  transform: translateY(100vh) !important;
 }
 
 ion-bottom-drawer.hidden {
-  top: 100vh !important;
+  -webkit-transform: translateY(100vh) !important;
+  transform: translateY(100vh) !important;
 }
 
 page-home .drawer-content {

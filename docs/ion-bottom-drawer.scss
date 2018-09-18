@@ -6,14 +6,15 @@
   z-index: 11 !important;
   background-color: white;
   transition: top 0.5s;
+  transition: 0.5s ease-in-out;
 
   &.hidden {
-    top: 100vh !important;
+    transform: translateY(100vh) !important;
   }
 }
 
 ion-bottom-drawer {
   &.hidden {
-    top: 100vh !important;
+    transform: translateY(100vh) !important;
   }
 }
