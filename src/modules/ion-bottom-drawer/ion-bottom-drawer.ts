@@ -21,6 +21,8 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   @Input() state: DrawerState = DrawerState.Docked;
 
+  @Input() minimumHeight: number = 0;
+
   @Output() stateChange: EventEmitter<DrawerState> = new EventEmitter<DrawerState>();
 
   private _startPositionTop: number;
@@ -58,7 +60,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
     switch (changes.state.currentValue) {
       case DrawerState.Closed:
-        this._setTranslateY('100vh');
+        this._setTranslateY('calc(100vh - ' + this.minimumHeight + 'px)');
         break;
       case DrawerState.Docked:
         this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
@@ -87,6 +89,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
           this.state = DrawerState.Closed;
         } else {
           if (this.state === DrawerState.Docked) this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
+          if (this.state === DrawerState.Closed) return;
           this.state = DrawerState.Docked;
         }
       }
@@ -103,6 +106,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
         const newTop = this._startPositionTop + ev.deltaY;
         if (newTop >= this.distanceTop) this._setTranslateY(newTop + 'px');
         else if (newTop < this.distanceTop) this._setTranslateY(this.distanceTop + 'px');
+        if (newTop > this._platform.height() - this.minimumHeight) this._setTranslateY((this._platform.height() - this.minimumHeight) + 'px');
       }
     }
   }

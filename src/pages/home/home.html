@@ -38,11 +38,15 @@
       <ion-label>Top Distance</ion-label>
       <ion-input type="number" [(ngModel)]="distanceTop" value="56"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Minimum Height</ion-label>
+      <ion-input type="number" [(ngModel)]="minimumHeight" value="0"></ion-input>
+    </ion-item>
   </ion-list>
 </ion-content>
 
-<ion-bottom-drawer [(state)]="drawerState" [dockedHeight]="dockedHeight" [bounceThreshold]="bounceThreshold"
-  [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
+<ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight"
+  [bounceThreshold]="bounceThreshold" [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
   <div class="drawer-content">
     Bottom Drawer Content
   </div>
