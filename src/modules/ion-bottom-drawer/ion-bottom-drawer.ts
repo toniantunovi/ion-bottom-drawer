@@ -21,7 +21,7 @@ export class IonBottomDrawerComponent {
 
   ngAfterViewInit() {
     this.renderer.setStyle(this.element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
-    this.renderer.setStyle(this.element.nativeElement, 'top', this.platform.height() - this.dockedHeight + 'px');
+    this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + (this.platform.height() - this.dockedHeight) + 'px)');
     const hammer = new Hammer(this.element.nativeElement);
     hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });
     hammer.on('pan panstart panend', (ev: any) => {
@@ -39,7 +39,7 @@ export class IonBottomDrawerComponent {
   }
 
   private handlePanStart() {
-    this.startPositionTop = this.element.nativeElement.offsetTop;
+    this.startPositionTop = this.element.nativeElement.getBoundingClientRect().top;
   }
 
   private handlePanEnd(ev) {
@@ -54,19 +54,19 @@ export class IonBottomDrawerComponent {
 
     if (bounceToTop) {
       this.domCtrl.write(() => {
-        this.renderer.setStyle(this.element.nativeElement, 'transition', 'top 0.5s');
-        this.renderer.setStyle(this.element.nativeElement, 'top', this.distanceTop + 'px');
+        this.renderer.setStyle(this.element.nativeElement, 'transition', '0.5s ease-in-out');
+        this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + this.distanceTop + 'px)');
       });
     } else if (bounceToBottom) {
       this.domCtrl.write(() => {
-        this.renderer.setStyle(this.element.nativeElement, 'transition', 'top 0.5s');
+        this.renderer.setStyle(this.element.nativeElement, 'transition', '0.5s ease-in-out');
         if (this.startPositionTop === this.platform.height() - this.dockedHeight && ev.deltaY > this.HIDE_HEIGHT_DIFF) {
           this.renderer.addClass(this.element.nativeElement, 'hidden');
-          this.renderer.setStyle(this.element.nativeElement, 'top', this.platform.height() - this.dockedHeight + 'px');
+          this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + (this.platform.height() - this.dockedHeight) + 'px)');
           this.hidden = true;
           this.hiddenChange.emit(this.hidden);
         } else {
-          this.renderer.setStyle(this.element.nativeElement, 'top', this.platform.height() - this.dockedHeight + 'px');
+          this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + (this.platform.height() - this.dockedHeight) + 'px)');
         }
       });
     }
@@ -79,8 +79,8 @@ export class IonBottomDrawerComponent {
       if (ev.additionalEvent === 'panup' || ev.additionalEvent === 'pandown') {
         this.domCtrl.write(() => {
           const newTop = this.startPositionTop + ev.deltaY;
-          if (newTop >= this.distanceTop) this.renderer.setStyle(this.element.nativeElement, 'top', newTop + 'px');
-          else if (newTop < this.distanceTop) this.renderer.setStyle(this.element.nativeElement, 'top', this.distanceTop + 'px');
+          if (newTop >= this.distanceTop) this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + newTop + 'px)');
+          else if (newTop < this.distanceTop) this.renderer.setStyle(this.element.nativeElement, 'transform', 'translateY(' + this.distanceTop + 'px)');
         });
       }
     }
