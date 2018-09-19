@@ -19,7 +19,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   @Input() transition: string = '0.5s ease-in-out';
 
-  @Input() state: DrawerState = DrawerState.Docked;
+  @Input() state: DrawerState = DrawerState.Closed;
 
   @Input() minimumHeight: number = 0;
 
@@ -37,7 +37,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   ngAfterViewInit() {
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
-    this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
+    this._setDrawerState(this.state);
 
     const hammer = new Hammer(this._element.nativeElement);
     hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });
@@ -57,8 +57,12 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (!changes.state) return;
+    this._renderer.setStyle(this._element.nativeElement, 'transition', this.transition);
+    this._setDrawerState(changes.state.currentValue);
+  }
 
-    switch (changes.state.currentValue) {
+  private _setDrawerState(state: DrawerState) {
+    switch (state) {
       case DrawerState.Closed:
         this._setTranslateY('calc(100vh - ' + this.minimumHeight + 'px)');
         break;
@@ -92,7 +96,6 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
           this.state = DrawerState.Docked;
         }
       }
-
       this.stateChange.emit(this.state);
     }
   }
