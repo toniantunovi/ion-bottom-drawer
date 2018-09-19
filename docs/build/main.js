@@ -273,7 +273,7 @@ var IonBottomDrawerComponent = /** @class */ (function () {
         this.bounceThreshold = 200;
         this.distanceTop = 0;
         this.transition = '0.5s ease-in-out';
-        this.state = __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Docked;
+        this.state = __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Closed;
         this.minimumHeight = 0;
         this.stateChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
         this._HIDE_HEIGHT_DIFF = 30;
@@ -281,7 +281,7 @@ var IonBottomDrawerComponent = /** @class */ (function () {
     IonBottomDrawerComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
         this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
-        this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
+        this._setDrawerState(this.state);
         var hammer = new Hammer(this._element.nativeElement);
         hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });
         hammer.on('pan panstart panend', function (ev) {
@@ -300,7 +300,11 @@ var IonBottomDrawerComponent = /** @class */ (function () {
     IonBottomDrawerComponent.prototype.ngOnChanges = function (changes) {
         if (!changes.state)
             return;
-        switch (changes.state.currentValue) {
+        this._renderer.setStyle(this._element.nativeElement, 'transition', this.transition);
+        this._setDrawerState(changes.state.currentValue);
+    };
+    IonBottomDrawerComponent.prototype._setDrawerState = function (state) {
+        switch (state) {
             case __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Closed:
                 this._setTranslateY('calc(100vh - ' + this.minimumHeight + 'px)');
                 break;
