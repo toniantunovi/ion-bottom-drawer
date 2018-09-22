@@ -13,20 +13,18 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   @Input() shouldBounce: boolean = true;
 
-  @Input() bounceThreshold: number = 200;
-
   @Input() distanceTop: number = 0;
 
   @Input() transition: string = '0.5s ease-in-out';
 
-  @Input() state: DrawerState = DrawerState.Closed;
+  @Input() state: DrawerState = DrawerState.Bottom;
 
   @Input() minimumHeight: number = 0;
 
   @Output() stateChange: EventEmitter<DrawerState> = new EventEmitter<DrawerState>();
 
   private _startPositionTop: number;
-  private readonly _HIDE_HEIGHT_DIFF = 30;
+  private readonly _BOUNCE_DELTA = 30;
 
   constructor(
     private _element: ElementRef,
@@ -57,13 +55,13 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (!changes.state) return;
-    this._renderer.setStyle(this._element.nativeElement, 'transition', this.transition);
     this._setDrawerState(changes.state.currentValue);
   }
 
   private _setDrawerState(state: DrawerState) {
+    this._renderer.setStyle(this._element.nativeElement, 'transition', this.transition);
     switch (state) {
-      case DrawerState.Closed:
+      case DrawerState.Bottom:
         this._setTranslateY('calc(100vh - ' + this.minimumHeight + 'px)');
         break;
       case DrawerState.Docked:
@@ -79,24 +77,47 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
   }
 
   private _handlePanEnd(ev) {
-    const newTop = this._startPositionTop + ev.deltaY;
-
     if (this.shouldBounce && ev.isFinal) {
       this._renderer.setStyle(this._element.nativeElement, 'transition', this.transition);
-      const bottomDiff = this._platform.height() - this.bounceThreshold - newTop;
 
-      if (bottomDiff >= 0) {
-        if (this.state === DrawerState.Opened) this._setTranslateY(this.distanceTop + 'px');
-        this.state = DrawerState.Opened;
-      } else {
-        if (this.state === DrawerState.Docked && ev.deltaY > this._HIDE_HEIGHT_DIFF) {
-          this.state = DrawerState.Closed;
-        } else {
-          if (this.state === DrawerState.Docked) this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
-          this.state = DrawerState.Docked;
-        }
+      switch (this.state) {
+        case DrawerState.Docked:
+          this._handleDockedPanEnd(ev);
+          break;
+        case DrawerState.Top:
+          this._handleTopPanEnd(ev);
+          break;
+        default:
+          this._handleBottomPanEnd(ev);
       }
-      this.stateChange.emit(this.state);
+    }
+    this.stateChange.emit(this.state);
+  }
+
+  private _handleTopPanEnd(ev) {
+    if (ev.deltaY > this._BOUNCE_DELTA) {
+      this.state = DrawerState.Docked;
+    } else {
+      this._setTranslateY(this.distanceTop + 'px');
+    }
+  }
+
+  private _handleDockedPanEnd(ev) {
+    const absDeltaY = Math.abs(ev.deltaY)
+    if (absDeltaY > this._BOUNCE_DELTA && ev.deltaY < 0) {
+      this.state = DrawerState.Top;
+    } else if (absDeltaY > this._BOUNCE_DELTA && ev.deltaY > 0) {
+      this.state = DrawerState.Bottom
+    } else {
+      this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
+    }
+  }
+
+  private _handleBottomPanEnd(ev) {
+    if (-ev.deltaY > this._BOUNCE_DELTA) {
+      this.state = DrawerState.Docked;
+    } else {
+      this._setTranslateY('calc(100vh - ' + this.minimumHeight + 'px)');
     }
   }
 
