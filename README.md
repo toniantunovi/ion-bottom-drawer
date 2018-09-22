@@ -53,7 +53,7 @@ Use it in your component template like this:
 <ion-content no-bounce>Component content.<ion-content>
 
 <ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight"
-  [bounceThreshold]="bounceThreshold" [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
+  [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
   <div class="drawer-content">
     Bottom Drawer Content
   </div>
