@@ -15,7 +15,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   @Input() distanceTop: number = 0;
 
-  @Input() transition: string = '0.5s ease-in-out';
+  @Input() transition: string = '0.25s ease-in-out';
 
   @Input() state: DrawerState = DrawerState.Bottom;
 

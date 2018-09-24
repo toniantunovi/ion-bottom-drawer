@@ -15,8 +15,8 @@ $ npm i ion-bottom-drawer --save
   - `dockedHeight: number` - Height of the drawer in docked position. Default value: `50`.
   - `shouldBounce: boolean` - Determines whether the drawer should automatically bounce between docked, closed and top positions. Default value: `True`.
   - `distanceTop: number` - Distance from top of fully opened drawer. Default value: `0`.
-  - `transition: string` - Specify custom CSS transition for bounce movement. Default value: `0.5s ease-in-out`.
-  - `state: DrawerState` - Current state of the drawer. Possible values: DrawerState.Closed, DrawerState.Docked, DrawerState.Opened. Default value: `DrawerState.Docked`.
+  - `transition: string` - Specify custom CSS transition for bounce movement. Default value: `0.25s ease-in-out`.
+  - `state: DrawerState` - Current state of the drawer. Possible values: DrawerState.Bottom, DrawerState.Docked, DrawerState.Top. Default value: `DrawerState.Docked`.
   - `minimumHeight: number` - Height of the drawer when in closed state calculated from the bottom of the screen. Default value: `0`. 
 
 

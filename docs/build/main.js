@@ -270,7 +270,7 @@ var IonBottomDrawerComponent = /** @class */ (function () {
         this.dockedHeight = 50;
         this.shouldBounce = true;
         this.distanceTop = 0;
-        this.transition = '0.5s ease-in-out';
+        this.transition = '0.25s ease-in-out';
         this.state = __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Bottom;
         this.minimumHeight = 0;
         this.stateChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
@@ -399,7 +399,7 @@ var IonBottomDrawerComponent = /** @class */ (function () {
     ], IonBottomDrawerComponent.prototype, "transition", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */]) === "function" && _a || Object)
+        __metadata("design:type", Number)
     ], IonBottomDrawerComponent.prototype, "state", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
@@ -407,17 +407,19 @@ var IonBottomDrawerComponent = /** @class */ (function () {
     ], IonBottomDrawerComponent.prototype, "minimumHeight", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Output */])(),
-        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]) === "function" && _b || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
     ], IonBottomDrawerComponent.prototype, "stateChange", void 0);
     IonBottomDrawerComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'ion-bottom-drawer',template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/modules/ion-bottom-drawer/ion-bottom-drawer.html"*/'<ion-content class="ion-bottom-drawer-scrollable-content" no-bounce>\n  <ng-content></ng-content>\n</ion-content>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/modules/ion-bottom-drawer/ion-bottom-drawer.html"*/,
             styleUrls: ['ion-bottom-drawer.scss']
         }),
-        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* Renderer2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* Renderer2 */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* DomController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* DomController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* Renderer2 */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* DomController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */]])
     ], IonBottomDrawerComponent);
     return IonBottomDrawerComponent;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=ion-bottom-drawer.js.map
