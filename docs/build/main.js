@@ -52,6 +52,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var HomePage = /** @class */ (function () {
     function HomePage() {
         this.shouldBounce = true;
+        this.disableDrag = false;
         this.dockedHeight = 150;
         this.distanceTop = 56;
         this.drawerState = __WEBPACK_IMPORTED_MODULE_1__modules_ion_bottom_drawer_drawer_state__["a" /* DrawerState */].Docked;
@@ -60,7 +61,7 @@ var HomePage = /** @class */ (function () {
     }
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Bottom Drawer Demo\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding no-bounce>\n  <ion-list radio-group [(ngModel)]="drawerState">\n    <ion-item>\n      <ion-label>Top</ion-label>\n      <ion-radio [checked]="drawerState===states.Top" [value]="states.Top"></ion-radio>\n    </ion-item>\n    <ion-item>\n      <ion-label>Docked</ion-label>\n      <ion-radio [checked]="drawerState===states.Docked" [value]="states.Docked"></ion-radio>\n    </ion-item>\n    <ion-item>\n      <ion-label>Bottom</ion-label>\n      <ion-radio [checked]="drawerState===states.Bottom" [value]="states.Bottom"></ion-radio>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-item>\n      <ion-label>Bounce</ion-label>\n      <ion-checkbox [(ngModel)]="shouldBounce"></ion-checkbox>\n    </ion-item>\n    <ion-item>\n      <ion-label>Docked height</ion-label>\n      <ion-input type="number" [(ngModel)]="dockedHeight" value="150"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Top Distance</ion-label>\n      <ion-input type="number" [(ngModel)]="distanceTop" value="56"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Minimum Height</ion-label>\n      <ion-input type="number" [(ngModel)]="minimumHeight" value="0"></ion-input>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight" [shouldBounce]="shouldBounce"\n  [distanceTop]="distanceTop">\n  <div class="drawer-content">\n    Bottom Drawer Content\n  </div>\n</ion-bottom-drawer>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Bottom Drawer Demo\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding no-bounce>\n  <ion-list radio-group [(ngModel)]="drawerState">\n    <ion-item>\n      <ion-label>Top</ion-label>\n      <ion-radio [checked]="drawerState===states.Top" [value]="states.Top"></ion-radio>\n    </ion-item>\n    <ion-item>\n      <ion-label>Docked</ion-label>\n      <ion-radio [checked]="drawerState===states.Docked" [value]="states.Docked"></ion-radio>\n    </ion-item>\n    <ion-item>\n      <ion-label>Bottom</ion-label>\n      <ion-radio [checked]="drawerState===states.Bottom" [value]="states.Bottom"></ion-radio>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-item>\n      <ion-label>Bounce</ion-label>\n      <ion-checkbox [(ngModel)]="shouldBounce"></ion-checkbox>\n    </ion-item>\n    <ion-item>\n      <ion-label>Disable drag</ion-label>\n      <ion-checkbox [(ngModel)]="disableDrag"></ion-checkbox>\n    </ion-item>\n    <ion-item>\n      <ion-label>Docked height</ion-label>\n      <ion-input type="number" [(ngModel)]="dockedHeight" value="150"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Top Distance</ion-label>\n      <ion-input type="number" [(ngModel)]="distanceTop" value="56"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Minimum Height</ion-label>\n      <ion-input type="number" [(ngModel)]="minimumHeight" value="0"></ion-input>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-bottom-drawer [disableDrag]="disableDrag" [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight"\n  [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">\n  <div class="drawer-content">\n    Bottom Drawer Content\n  </div>\n</ion-bottom-drawer>\n'/*ion-inline-end:"/Users/toniantunovic/dev/npm-components/ion-bottom-drawer/src/pages/home/home.html"*/
         })
     ], HomePage);
     return HomePage;
@@ -269,6 +270,7 @@ var IonBottomDrawerComponent = /** @class */ (function () {
         this._platform = _platform;
         this.dockedHeight = 50;
         this.shouldBounce = true;
+        this.disableDrag = false;
         this.distanceTop = 0;
         this.transition = '0.25s ease-in-out';
         this.state = __WEBPACK_IMPORTED_MODULE_2__drawer_state__["a" /* DrawerState */].Bottom;
@@ -283,6 +285,8 @@ var IonBottomDrawerComponent = /** @class */ (function () {
         var hammer = new Hammer(this._element.nativeElement);
         hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });
         hammer.on('pan panstart panend', function (ev) {
+            if (_this.disableDrag)
+                return;
             switch (ev.type) {
                 case 'panstart':
                     _this._handlePanStart();
@@ -389,6 +393,10 @@ var IonBottomDrawerComponent = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
         __metadata("design:type", Boolean)
     ], IonBottomDrawerComponent.prototype, "shouldBounce", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Boolean)
+    ], IonBottomDrawerComponent.prototype, "disableDrag", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
         __metadata("design:type", Number)
