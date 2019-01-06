@@ -27,6 +27,10 @@
       <ion-checkbox [(ngModel)]="shouldBounce"></ion-checkbox>
     </ion-item>
     <ion-item>
+      <ion-label>Disable drag</ion-label>
+      <ion-checkbox [(ngModel)]="disableDrag"></ion-checkbox>
+    </ion-item>
+    <ion-item>
       <ion-label>Docked height</ion-label>
       <ion-input type="number" [(ngModel)]="dockedHeight" value="150"></ion-input>
     </ion-item>
@@ -41,8 +45,8 @@
   </ion-list>
 </ion-content>
 
-<ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight" [shouldBounce]="shouldBounce"
-  [distanceTop]="distanceTop">
+<ion-bottom-drawer [disableDrag]="disableDrag" [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight"
+  [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
   <div class="drawer-content">
     Bottom Drawer Content
   </div>

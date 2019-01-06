@@ -13,6 +13,8 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   @Input() shouldBounce: boolean = true;
 
+  @Input() disableDrag: boolean = false;
+
   @Input() distanceTop: number = 0;
 
   @Input() transition: string = '0.25s ease-in-out';
@@ -40,6 +42,8 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
     const hammer = new Hammer(this._element.nativeElement);
     hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });
     hammer.on('pan panstart panend', (ev: any) => {
+      if (this.disableDrag) return;
+
       switch (ev.type) {
         case 'panstart':
           this._handlePanStart();

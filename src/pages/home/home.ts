@@ -7,6 +7,7 @@ import { DrawerState } from '../../modules/ion-bottom-drawer/drawer-state';
 })
 export class HomePage {
   shouldBounce = true;
+  disableDrag = false;
   dockedHeight = 150;
   distanceTop = 56;
   drawerState = DrawerState.Docked;
