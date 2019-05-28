@@ -19,7 +19,6 @@ npm-debug.log*
 .tmp/
 .versions/
 coverage/
-dist/
 node_modules/
 tmp/
 temp/
@@ -30,6 +29,9 @@ plugins/android.json
 plugins/ios.json
 $RECYCLE.BIN/
 
+
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+.circleci
+.github
