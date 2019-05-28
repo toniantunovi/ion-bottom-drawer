@@ -1,6 +1,6 @@
-# Ionic 3 Bottom Drawer
+# Ionic 4 Bottom Drawer
 
-<a href="https://antunovic.co/ionic3/component/angular/2018/08/18/bottom-drawer-ionic.html">Bottom drawer component for Ionic 3</a>. Demo can be viewed <a target="_blank" href="https://toniantunovi.github.io/ion-bottom-drawer/">here</a>.
+<a href="https://antunovic.co/ionic3/component/angular/2018/08/18/bottom-drawer-ionic.html">Bottom drawer component for Ionic 4</a>. Demo can be viewed <a target="_blank" href="https://toniantunovi.github.io/ion-bottom-drawer/">here</a>.
 
 # Installation
 

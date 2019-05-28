@@ -29,9 +29,9 @@ plugins/android.json
 plugins/ios.json
 $RECYCLE.BIN/
 
-
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
 .circleci
 .github
+.editorconfig

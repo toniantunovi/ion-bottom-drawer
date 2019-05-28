@@ -59,8 +59,9 @@
             var hammer = new Hammer(this._element.nativeElement);
             hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });
             hammer.on('pan panstart panend', function (ev) {
-                if (_this.disableDrag)
+                if (_this.disableDrag) {
                     return;
+                }
                 switch (ev.type) {
                     case 'panstart':
                         _this._handlePanStart();
@@ -74,8 +75,9 @@
             });
         };
         IonBottomDrawerComponent.prototype.ngOnChanges = function (changes) {
-            if (!changes.state)
+            if (!changes.state) {
                 return;
+            }
             this._setDrawerState(changes.state.currentValue);
         };
         IonBottomDrawerComponent.prototype._setDrawerState = function (state) {
@@ -144,12 +146,15 @@
             if (pointerY > 0 && pointerY < this._platform.height()) {
                 if (ev.additionalEvent === 'panup' || ev.additionalEvent === 'pandown') {
                     var newTop = this._startPositionTop + ev.deltaY;
-                    if (newTop >= this.distanceTop)
+                    if (newTop >= this.distanceTop) {
                         this._setTranslateY(newTop + 'px');
-                    else if (newTop < this.distanceTop)
+                    }
+                    else if (newTop < this.distanceTop) {
                         this._setTranslateY(this.distanceTop + 'px');
-                    if (newTop > this._platform.height() - this.minimumHeight)
+                    }
+                    if (newTop > this._platform.height() - this.minimumHeight) {
                         this._setTranslateY((this._platform.height() - this.minimumHeight) + 'px');
+                    }
                 }
             }
         };
@@ -161,23 +166,23 @@
         };
         __decorate([
             core.Input(),
-            __metadata("design:type", Number)
+            __metadata("design:type", Object)
         ], IonBottomDrawerComponent.prototype, "dockedHeight", void 0);
         __decorate([
             core.Input(),
-            __metadata("design:type", Boolean)
+            __metadata("design:type", Object)
         ], IonBottomDrawerComponent.prototype, "shouldBounce", void 0);
         __decorate([
             core.Input(),
-            __metadata("design:type", Boolean)
+            __metadata("design:type", Object)
         ], IonBottomDrawerComponent.prototype, "disableDrag", void 0);
         __decorate([
             core.Input(),
-            __metadata("design:type", Number)
+            __metadata("design:type", Object)
         ], IonBottomDrawerComponent.prototype, "distanceTop", void 0);
         __decorate([
             core.Input(),
-            __metadata("design:type", String)
+            __metadata("design:type", Object)
         ], IonBottomDrawerComponent.prototype, "transition", void 0);
         __decorate([
             core.Input(),
@@ -185,7 +190,7 @@
         ], IonBottomDrawerComponent.prototype, "state", void 0);
         __decorate([
             core.Input(),
-            __metadata("design:type", Number)
+            __metadata("design:type", Object)
         ], IonBottomDrawerComponent.prototype, "minimumHeight", void 0);
         __decorate([
             core.Output(),
