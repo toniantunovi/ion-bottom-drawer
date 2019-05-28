@@ -1,32 +1,30 @@
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { IonicModule } from '@ionic/angular';
+import { IonicStorageModule } from '@ionic/storage';
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { IonBottomDrawerModule } from '../modules/ion-bottom-drawer/ion-bottom-drawer.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [
-    MyApp,
-    HomePage
-  ],
   imports: [
     BrowserModule,
-    IonBottomDrawerModule,
-    IonicModule.forRoot(MyApp)
+    AppRoutingModule,
+    HttpClientModule,
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
+    })
   ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
-  ]
+  declarations: [AppComponent],
+  providers: [InAppBrowser, SplashScreen, StatusBar],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
