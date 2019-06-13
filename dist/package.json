@@ -27,6 +27,8 @@
     "@types/hammerjs": "^2.0.36"
   },
   "devDependencies": {
+    "hammerjs": "^2.0.8",
+    "@types/hammerjs": "^2.0.36",
     "@angular-devkit/architect": "0.13.9",
     "@angular-devkit/build-angular": "0.13.9",
     "@angular-devkit/core": "7.3.9",
