@@ -1,11 +1,18 @@
 # Ionic 4 Bottom Drawer
 
-<a href="https://antunovic.co/ionic3/component/angular/2018/08/18/bottom-drawer-ionic.html">Bottom drawer component for Ionic 4</a>. Demo can be viewed <a target="_blank" href="https://toniantunovi.github.io/ion-bottom-drawer/">here</a>.
+Bottom drawer component for Ionic 4. Demo can be viewed <a target="_blank" href="https://toniantunovi.github.io/ion-bottom-drawer/">here</a>.
 
 # Installation
 
 ```
 $ npm i ion-bottom-drawer --save
+```
+
+## Dependencies
+Peer dependencies hammerjs@2.0.8 and @types/hammerjs@2.0.36 can be installed with:
+```
+$ npm i hammerjs@2.0.8 --save
+$ npm i @types/hammerjs@2.0.36 --save
 ```
 
 # API
@@ -59,6 +66,12 @@ Use it in your component template like this:
     Bottom Drawer Content
   </div>
 </ion-bottom-drawer>
+```
+
+# Ionic 3
+Last version which supported Ionic 3 was 1.0.3 and can be installed by running the following command:
+```
+$ npm i ion-bottom-drawer@1.0.3 --save
 ```
 
 # License
