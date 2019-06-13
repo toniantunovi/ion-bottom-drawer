@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Bottom Drawer Demo
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content radio-group padding no-bounce>
+  <ion-radio-group [(ngModel)]="drawerState">
+    <ion-list-header>
+      States
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Top</ion-label>
+      <ion-radio [checked]="drawerState===states.Top" [value]="states.Top"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Docked</ion-label>
+      <ion-radio [checked]="drawerState===states.Docked" [value]="states.Docked"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Bottom</ion-label>
+      <ion-radio [checked]="drawerState===states.Bottom" [value]="states.Bottom"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+  <ion-list>
+    <ion-list-header>
+      Other Options
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Bounce</ion-label>
+      <ion-checkbox [(ngModel)]="shouldBounce"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Disable drag</ion-label>
+      <ion-checkbox [(ngModel)]="disableDrag"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Docked height</ion-label>
+      <ion-input type="number" [(ngModel)]="dockedHeight" value="150"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Top Distance</ion-label>
+      <ion-input type="number" [(ngModel)]="distanceTop" value="56"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Minimum Height</ion-label>
+      <ion-input type="number" [(ngModel)]="minimumHeight" value="0"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-bottom-drawer [disableDrag]="disableDrag" [(state)]="drawerState" [minimumHeight]="minimumHeight"
+  [dockedHeight]="dockedHeight" [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
+  <div class="drawer-content">
+    Bottom Drawer Content
+  </div>
+</ion-bottom-drawer>

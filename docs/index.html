@@ -1,52 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-  <script data-ionic="inject">
-    (function(w){var i=w.Ionic=w.Ionic||{};i.staticDir='build/';})(window);
-  </script>
   <meta charset="UTF-8">
-  <title>Ionic App</title>
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ion Bottom Drawer Demo</title>
+
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
 
-  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#4e8ef7">
+  <meta name="theme-color" content="#387ef5">
 
-  <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <!-- cordova.js required for cordova apps (remove if not needed) -->
-  <script src="cordova.js"></script>
+  <base href="/">
 
-  <!-- un-comment this code to enable service worker
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('service worker installed'))
-        .catch(err => console.error('Error', err));
-    }
-  </script>-->
+  <link rel="icon" type="image/x-icon" href="assets/img/appicon.png">
 
-  <link href="build/main.css" rel="stylesheet">
+  <link rel="apple-touch-icon" href="assets/img/appicon.png">
 
+  <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
 
-  <!-- Ionic's root component and where the app will load -->
-  <ion-app></ion-app>
+  <app-root></app-root>
 
-  <!-- The polyfills js is generated during the build process -->
-  <script src="build/polyfills.js"></script>
+  <!-- Replace the API key with your own, see:
+    https://developers.google.com/maps/documentation/javascript/get-api-key -->
+  <!-- <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8pf6ZdFQj5qw7rc_HSGrhUwQKfIe9ICw"></script> -->
 
-  <!-- The vendor js is generated during the build process
-       It contains all of the dependencies in node_modules -->
-  <script src="build/vendor.js"></script>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="es2015-polyfills.js" nomodule></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
 
-  <!-- The main bundle js is generated during the build process -->
-  <script src="build/main.js"></script>
-
-</body>
 </html>
