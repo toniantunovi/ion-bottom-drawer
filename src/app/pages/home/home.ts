@@ -13,5 +13,5 @@ export class HomePage {
   distanceTop = 56;
   drawerState = DrawerState.Docked;
   states = DrawerState;
-  minimumHeight = 0;
+  minimumHeight = 50;
 }
