@@ -73,7 +73,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
     this._renderer.setStyle(this._element.nativeElement, 'transition', this.transition);
     switch (state) {
       case DrawerState.Bottom:
-        this._setTranslateY('calc(100vh - ' + this.minimumHeight + 'px)');
+        this._setTranslateY((this._platform.height() - this.minimumHeight) + 'px');
         break;
       case DrawerState.Docked:
         this._setTranslateY((this._platform.height() - this.dockedHeight) + 'px');
@@ -128,7 +128,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
     if (-ev.deltaY > this._BOUNCE_DELTA) {
       this.state = DrawerState.Docked;
     } else {
-      this._setTranslateY('calc(100vh - ' + this.minimumHeight + 'px)');
+      this._setTranslateY((this._platform.height() - this.minimumHeight) + 'px');
     }
   }
 
